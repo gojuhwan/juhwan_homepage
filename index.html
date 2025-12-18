@@ -59,22 +59,32 @@
     }
     .brand{
       display:flex; align-items:center; gap: 12px;
-      min-width: 220px;
+      min-width: 260px;
     }
-    .logo{
-      width: 44px; height: 44px;
+
+    /* ANR LAB logo (wide) */
+    .lablogo{
+      height: 40px;
+      width: 170px;
       border-radius: 10px;
-      overflow:hidden;
       border: 1px solid var(--line);
       background: #fff;
-      display:grid; place-items:center;
-      box-shadow: 0 10px 22px rgba(14,30,58,.08);
+      box-shadow: 0 10px 22px rgba(14,30,58,.06);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 6px 10px;
       flex: 0 0 auto;
+      overflow: hidden;
     }
-    .logo img{ width:100%; height:100%; object-fit:cover; display:block; }
-    .who{
-      line-height:1.1;
+    .lablogo img{
+      width: 100%;
+      height: 100%;
+      object-fit: contain;   /* 비율 유지 */
+      display:block;
     }
+
+    .who{ line-height:1.1; }
     .who .name{
       font-weight: 900;
       letter-spacing: -.3px;
@@ -107,6 +117,7 @@
       background: rgba(20,121,212,.08);
       border-color: rgba(20,121,212,.22);
       color: var(--text);
+      text-decoration:none;
     }
     .navbtn:active{ transform: translateY(1px); }
     .navbtn.active{
@@ -130,6 +141,7 @@
       box-shadow: 0 10px 22px rgba(14,30,58,.06);
       font-size: 12.5px;
       color: var(--muted);
+      white-space: nowrap;
     }
     .chip b{ color: var(--text); font-weight: 900; }
 
@@ -159,7 +171,7 @@
     /* App / screens */
     .app{
       position: fixed;
-      top: 72px; /* header height approx */
+      top: 72px;
       left:0; right:0; bottom:0;
       padding: 18px;
     }
@@ -262,6 +274,42 @@
       line-height: 1.65;
     }
 
+    /* profile photo */
+    .avatar{
+      width: 78px;
+      height: 78px;
+      border-radius: 14px;
+      overflow:hidden;
+      border: 1px solid rgba(14,30,58,.14);
+      background: #fff;
+      box-shadow: 0 10px 22px rgba(14,30,58,.08);
+      flex: 0 0 auto;
+    }
+    .avatar img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display:block;
+    }
+    .whoBlock{
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed rgba(14,30,58,.14);
+    }
+    .whoBlock .bigName{
+      font-weight: 900;
+      letter-spacing: -.2px;
+    }
+    .whoBlock .bigRole{
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12.8px;
+      line-height: 1.35;
+    }
+
     .pillrow{ display:flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
     .pill{
       font-size: 12.5px;
@@ -348,7 +396,7 @@
       nav{ gap: 6px; }
       .navbtn{ padding: 8px 10px; }
       .brand{ min-width: unset; }
-      body{ overflow:hidden; }
+      .lablogo{ width: 130px; }
     }
   </style>
 </head>
@@ -357,9 +405,8 @@
   <header>
     <div class="header-inner">
       <div class="brand">
-        <div class="logo" title="Lab logo">
-          <!-- 너가 넣는 파일명: anr.jpg -->
-          <img src="anr.jpg" alt="ANR Lab logo" onerror="this.style.display='none'" />
+        <div class="lablogo" title="ANR Lab logo">
+          <img src="anr.jpg" alt="ANR LAB logo" />
         </div>
         <div class="who">
           <div class="name">Juhwan Ko</div>
@@ -402,7 +449,7 @@
               <span class="pill">Micro-LED</span>
               <span class="pill alt">Passivation (Al₂O₃ vs SiO₂)</span>
               <span class="pill">SEM / Confocal / 3D profiling</span>
-              <span class="pill alt">Raman spectroscopy</spanp>
+              <span class="pill alt">Raman spectroscopy</span>
               <span class="pill">Python · MATLAB</span>
               <span class="pill alt">TCAD planning</span>
             </div>
@@ -421,10 +468,25 @@
 
               <div class="card">
                 <h3>Quick Info</h3>
+
+                <!-- ✅ profile photo block -->
+                <div class="whoBlock">
+                  <div class="avatar" title="Profile photo">
+                    <img src="image.jpg" alt="Juhwan Ko photo" onerror="this.closest('.avatar').style.display='none';" />
+                  </div>
+                  <div>
+                    <div class="bigName">Juhwan Ko</div>
+                    <div class="bigRole">
+                      M.S. Student · Photonics & Nanoelectronics<br/>
+                      Hanyang University ERICA
+                    </div>
+                  </div>
+                </div>
+
                 <div class="kv"><span class="k">Location</span><span class="v">Bucheon-si, South Korea</span></div>
                 <div class="kv"><span class="k">Email</span><span class="v"><a href="mailto:rhwnghks00@hanyang.ac.kr">rhwnghks00@hanyang.ac.kr</a></span></div>
                 <div class="kv"><span class="k">GitHub</span><span class="v"><a href="https://github.com/gojuhwan" target="_blank" rel="noopener">github.com/gojuhwan</a></span></div>
-                <div class="kv"><span class="k">Affiliation</span><span class="v">Hanyang Univ. ERICA</span></div>
+                <div class="kv"><span class="k">Affiliation</span><span class="v">ANR Lab · Hanyang Univ. ERICA</span></div>
               </div>
             </div>
 
@@ -497,7 +559,7 @@
             <h1>Hanyang University ERICA</h1>
             <p class="sub">
               Same department track: <b>B.S. → M.S. in Photonics and Nanoelectronics</b>.
-              (You asked to explicitly show ERICA undergrad + same dept. master’s.)
+              (B.S. admission & graduation dates included as requested.)
             </p>
           </div>
 
@@ -596,15 +658,15 @@
         </div>
       </section>
 
-      <!-- FACILITIES (lab-site vibe) -->
+      <!-- FACILITIES -->
       <section id="facilities" class="screen" aria-label="Facilities">
         <div class="panel">
           <div class="panel-head">
             <div class="kicker"><span class="dot"></span><span>Facilities-style layout</span></div>
             <h1>Equipment & Characterization</h1>
             <p class="sub">
-              A lab-homepage style grid (like a facilities page): concise tiles, clean captions, and a consistent visual rhythm.
-              (Images are optional — you can replace later with real SEM/graphs.)
+              Lab-homepage style grid (facilities vibe): concise tiles, clean captions, consistent rhythm.
+              Drop your real SEM/graphs later with the same filenames to replace placeholders.
             </p>
           </div>
 
@@ -612,7 +674,6 @@
             <div class="grid4">
               <div class="tile">
                 <div class="img">
-                  <!-- 선택: sem_placeholder.png를 레포에 넣으면 여기 자동 표시 -->
                   <img src="sem_placeholder.png" alt="SEM image" onerror="this.remove();"/>
                 </div>
                 <div class="cap">
@@ -681,8 +742,8 @@
             </div>
 
             <div class="footer">
-              <div>To replace placeholders: drop your real SEM/graphs with the same filenames.</div>
-              <div>Recommended: keep 1–2 real images max (too many images = 과제 느낌).</div>
+              <div>Replace images by uploading: sem_placeholder.png / graph_placeholder.png (optional).</div>
+              <div>Keep images minimal for a clean lab-site vibe.</div>
             </div>
           </div>
         </div>
@@ -747,10 +808,7 @@
     function setActiveNav(id){
       navBtns.forEach(b => b.classList.toggle("active", b.dataset.go === id));
     }
-
-    function getScreen(id){
-      return document.getElementById(id);
-    }
+    function getScreen(id){ return document.getElementById(id); }
 
     function show(id, push=true){
       if (animating) return;
@@ -773,7 +831,6 @@
       // URL hash
       if (push) history.pushState({id}, "", "#" + id);
 
-      // end animation after transition
       window.setTimeout(() => {
         from.classList.remove("exiting");
         currentId = id;
@@ -781,26 +838,22 @@
       }, 320);
     }
 
-    navBtns.forEach(btn => {
-      btn.addEventListener("click", () => show(btn.dataset.go, true));
-    });
-
+    navBtns.forEach(btn => btn.addEventListener("click", () => show(btn.dataset.go, true)));
     document.getElementById("backHome").addEventListener("click", () => show("home", true));
 
-    // handle back/forward
-    window.addEventListener("popstate", (e) => {
+    window.addEventListener("popstate", () => {
       const id = (location.hash || "#home").replace("#","");
       if (getScreen(id)) show(id, false);
     });
 
-    // initial hash
     const initial = (location.hash || "#home").replace("#","");
     if (getScreen(initial)) {
       currentId = "home";
       setActiveNav("home");
       if (initial !== "home") show(initial, false);
     }
-    document.getElementById("hashHint").textContent = "You can share direct links like: " + location.origin + location.pathname + "#skills";
+    document.getElementById("hashHint").textContent =
+      "You can share direct links like: " + location.origin + location.pathname + "#skills";
   </script>
 </body>
 </html>
