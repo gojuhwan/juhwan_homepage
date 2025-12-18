@@ -1,674 +1,673 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juhwan Go - Professional Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-bg: #ecf0f1;
-            --text-dark: #2c3e50;
-            --text-light: #7f8c8d;
-            --white: #ffffff;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--white);
-        }
-
-        /* Navigation */
-        header {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--secondary-color);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--white);
-            padding: 4rem 0;
-            text-align: center;
-            min-height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-content {
-            max-width: 900px;
-        }
-
-        .profile-photo {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 2rem;
-            border-radius: 50%;
-            background-color: var(--light-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 4px solid var(--white);
-            overflow: hidden;
-        }
-
-        .profile-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero .subtitle {
-            font-size: 1.5rem;
-            color: #ecf0f1;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-color);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background-color: #c0392b;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background-color: var(--white);
-            color: var(--primary-color);
-            border: 2px solid var(--white);
-        }
-
-        .btn-secondary:hover {
-            background-color: transparent;
-            color: var(--white);
-        }
-
-        /* Section Styling */
-        section {
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--light-bg);
-        }
-
-        section:last-child {
-            border-bottom: none;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            text-align: center;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background-color: var(--secondary-color);
-            border-radius: 2px;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
-            color: var(--text-light);
-            line-height: 1.8;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-card {
-            background-color: var(--light-bg);
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .skill-card h3 {
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .skill-list {
-            text-align: left;
-            display: inline-block;
-        }
-
-        .skill-list li {
-            list-style: none;
-            padding: 0.5rem 0;
-            color: var(--text-light);
-        }
-
-        .skill-list li::before {
-            content: '✓ ';
-            color: var(--secondary-color);
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background-color: var(--secondary-color);
-        }
-
-        .timeline-item {
-            margin-bottom: 3rem;
-            width: 45%;
-        }
-
-        .timeline-item:nth-child(odd) {
-            margin-left: 0;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) {
-            margin-left: 55%;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background-color: var(--secondary-color);
-            border: 4px solid var(--white);
-            border-radius: 50%;
-            top: 0;
-            margin-top: -8px;
-        }
-
-        .timeline-item {
-            position: relative;
-        }
-
-        .timeline-content {
-            background-color: var(--light-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-        }
-
-        .timeline-content h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-date {
-            color: var(--secondary-color);
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-description {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* Accomplishments Section */
-        .accomplishments-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .accomplishment-card {
-            background: linear-gradient(135deg, var(--secondary-color) 0%, #2980b9 100%);
-            color: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .accomplishment-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .accomplishment-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .accomplishment-card p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background-color: var(--light-bg);
-            padding: 4rem 2rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            margin: 2rem 0;
-        }
-
-        .contact-item {
-            text-align: center;
-        }
-
-        .contact-item a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .contact-item a:hover {
-            color: var(--accent-color);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-color);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                margin-left: 60px !important;
-                text-align: left !important;
-            }
-
-            .timeline-item::before {
-                left: 20px;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 200px;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Juhwan Ko - Photonics & Nanoelectronics | Micro-LED Research" />
+  <title>Juhwan Ko | Portfolio</title>
+
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.55);
+      --line: rgba(255,255,255,.14);
+      --accent: #7dd3fc;
+      --accent2:#a78bfa;
+      --shadow: 0 18px 45px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 24px;
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(167,139,250,.22), transparent 55%),
+        radial-gradient(1000px 550px at 10% 0%, rgba(125,211,252,.18), transparent 55%),
+        linear-gradient(180deg, #070b16, #0b1020 35%, #070b16 100%);
+      overflow-x:hidden;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 4px; }
+
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 70px; }
+
+    /* Top nav */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,11,22,.55);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight: 700;
+      letter-spacing:.2px;
+    }
+    .dot{
+      width: 10px; height: 10px; border-radius: 99px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 20px rgba(125,211,252,.35);
+    }
+    .nav{
+      display:flex; gap: 12px; flex-wrap: wrap; justify-content:flex-end;
+    }
+    .nav a{
+      padding: 8px 10px;
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      border: 1px solid transparent;
+    }
+    .nav a:hover{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.10);
+      color: var(--text);
+      text-decoration:none;
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 22px;
+      margin-top: 26px;
+      align-items: stretch;
+    }
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+    }
+    .hero-left{ padding: 26px; }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .kicker b{ color: var(--text); font-weight: 700; }
+    h1{
+      margin: 14px 0 8px;
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.06;
+      letter-spacing: -.6px;
+    }
+    .subtitle{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .pillrow{ display:flex; gap:10px; flex-wrap: wrap; margin: 14px 0 18px; }
+    .pill{
+      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(125,211,252,.12);
+      border: 1px solid rgba(125,211,252,.25);
+      color: rgba(255,255,255,.88);
+    }
+    .pill.alt{
+      background: rgba(167,139,250,.12);
+      border-color: rgba(167,139,250,.25);
+    }
+
+    .cta{
+      display:flex; gap: 10px; flex-wrap: wrap; margin-top: 18px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(125,211,252,.24), rgba(167,139,250,.20));
+      border-color: rgba(255,255,255,.18);
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0px); }
+
+    .hero-right{
+      padding: 18px;
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .profile{
+      display:flex;
+      gap: 14px;
+      align-items: center;
+      padding: 14px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .avatar{
+      width: 84px; height: 84px; border-radius: 18px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      overflow:hidden;
+      flex: 0 0 auto;
+    }
+    .avatar img{
+      width:100%; height:100%;
+      object-fit: cover;
+      display:block;
+    }
+    .pname{ font-weight: 800; margin:0; }
+    .prole{ margin: 4px 0 0; color: var(--muted); font-size: 13px; line-height: 1.35; }
+
+    .info{
+      padding: 14px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .info .row{
+      display:flex; align-items:center; justify-content: space-between;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      font-size: 13px;
+    }
+    .info .row:last-child{ border-bottom:none; }
+    .label{ color: var(--muted2); }
+    .value{ color: var(--text); text-align:right; overflow-wrap:anywhere; }
+
+    /* Sections */
+    section{ margin-top: 22px; }
+    .section-card{ padding: 22px; }
+    .section-title{
+      display:flex; align-items:center; justify-content: space-between; gap: 12px;
+      margin: 0 0 12px;
+    }
+    .section-title h2{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -.2px;
+    }
+    .section-title .hint{ color: var(--muted2); font-size: 13px; }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .box{
+      padding: 16px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .box h3{
+      margin: 0 0 8px;
+      font-size: 14px;
+      letter-spacing: -.1px;
+    }
+    .box p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    ul{
+      margin: 10px 0 0 18px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+    li{ margin: 6px 0; }
+
+    .timeline{
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .titem{
+      padding: 16px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .tmeta{
+      display:flex; flex-wrap: wrap; gap: 10px;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .tmeta .when{ color: var(--muted2); font-size: 13px; }
+    .tmeta .role{ font-weight: 800; }
+    .tmeta .where{ color: var(--muted); font-size: 13px; }
+
+    /* Projects */
+    .proj-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 10px;
+    }
+    .proj{
+      padding: 16px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 150px;
+    }
+    .proj .top{
+      display:flex; align-items:flex-start; justify-content: space-between; gap: 10px;
+    }
+    .proj .name{ font-weight: 800; }
+    .proj .desc{ color: var(--muted); font-size: 13px; line-height: 1.55; margin: 0; }
+    .proj .meta{
+      display:flex; gap: 10px; flex-wrap: wrap;
+      margin-top:auto;
+      color: var(--muted2);
+      font-size: 12px;
+    }
+    .tag{
+      padding: 6px 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    /* Footer */
+    footer{
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted2);
+      font-size: 13px;
+      display:flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+      .grid2{ grid-template-columns: 1fr; }
+      .grid3{ grid-template-columns: 1fr; }
+      .proj-grid{ grid-template-columns: 1fr; }
+      .nav{ display:none; }
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Navigation -->
-    <header>
-        <nav class="container">
-            <div class="logo">JG Portfolio</div>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#accomplishments">Accomplishments</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Juhwan Ko</span>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="profile-photo">
-                <img src="https://via.placeholder.com/150" alt="Profile Photo">
-            </div>
-            <h1>Juhwan Go</h1>
-            <p class="subtitle">Professional Portfolio</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                <a href="#about" class="btn btn-secondary">Learn More</a>
-            </div>
+  <div class="wrap">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="card hero-left">
+        <div class="kicker">
+          <span>🎓</span>
+          <span><b>M.S. Student</b> | Photonics & Nanoelectronics</span>
         </div>
+
+        <h1>Micro-LED Researcher<br/>focused on fabrication & characterization</h1>
+
+        <p class="subtitle">
+          I work on Micro-LED device research, including passivation optimization (Al₂O₃ vs. SiO₂),
+          process troubleshooting, and multi-modal analysis (SEM, confocal microscopy, 3D profiling, Raman).
+          I also build structured measurement/data workflows and explore TCAD-based simulation planning.
+        </p>
+
+        <div class="pillrow">
+          <span class="pill">Micro-LED Passivation</span>
+          <span class="pill alt">Raman Spectroscopy</span>
+          <span class="pill">Device Characterization</span>
+          <span class="pill alt">Process Optimization</span>
+          <span class="pill">Data Analysis</span>
+          <span class="pill alt">TCAD Planning</span>
+        </div>
+
+        <div class="cta">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="https://github.com/gojuhwan" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="mailto:rhwnghks00@hanyang.ac.kr">Email</a>
+        </div>
+      </div>
+
+      <div class="card hero-right">
+        <div class="profile">
+          <div class="avatar" title="Profile photo">
+            <!-- Put your photo as image.jpg in the repo root -->
+            <img src="image.jpg" alt="Juhwan Ko profile photo" onerror="this.style.display='none'" />
+          </div>
+          <div>
+            <p class="pname">Juhwan Ko</p>
+            <p class="prole">M.S. Student (Photonics & Nanoelectronics)<br/>Hanyang University, South Korea</p>
+          </div>
+        </div>
+
+        <div class="info" aria-label="Contact summary">
+          <div class="row"><span class="label">Location</span><span class="value">Bucheon-si, South Korea 14554</span></div>
+          <div class="row"><span class="label">Phone</span><span class="value">+82 10-3439-7567</span></div>
+          <div class="row"><span class="label">Email</span><span class="value"><a href="mailto:rhwnghks00@hanyang.ac.kr">rhwnghks00@hanyang.ac.kr</a></span></div>
+          <div class="row"><span class="label">GitHub</span><span class="value"><a href="https://github.com/gojuhwan" target="_blank" rel="noopener">github.com/gojuhwan</a></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="card section-card">
+      <div class="section-title">
+        <h2>About</h2>
+        <div class="hint">Summary</div>
+      </div>
+
+      <div class="grid2">
+        <div class="box">
+          <h3>Profile</h3>
+          <p>
+            Adaptable and curious researcher with a strong interest in translating experimental observations
+            into actionable process improvements. Comfortable working across fabrication, characterization,
+            and data organization/analysis for lab reporting and decision-making.
+          </p>
+        </div>
+        <div class="box">
+          <h3>Research Interests</h3>
+          <p>
+            Micro-LED passivation and sidewall leakage mechanisms, reliability/stability trends,
+            Raman-based analysis (carrier/strain/phonon-mode changes), and hypothesis-driven planning
+            using TCAD process/device simulations.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Welcome to my professional portfolio. I'm a dedicated professional with a passion for excellence and continuous learning.</p>
-                    <p>With a strong background in my field, I bring expertise, creativity, and a commitment to delivering high-quality results. My approach combines technical proficiency with practical problem-solving skills.</p>
-                    <p>I believe in building meaningful professional relationships and contributing positively to every project I undertake. When I'm not working, I enjoy staying updated with industry trends and pursuing personal development initiatives.</p>
-                </div>
-                <div class="about-image">
-                    <div style="background-color: var(--light-bg); padding: 2rem; border-radius: 8px; text-align: center; height: 100%;">
-                        <p style="color: var(--text-light);">Additional information and professional summary</p>
-                    </div>
-                </div>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="card section-card">
+      <div class="section-title">
+        <h2>Experience</h2>
+        <div class="hint">Work History</div>
+      </div>
+
+      <div class="timeline">
+        <div class="titem">
+          <div class="tmeta">
+            <div>
+              <div class="role">M.S. Student Researcher</div>
+              <div class="where">Hanyang University, Dept. of Photonics and Nanoelectronics (Ansan, Gyeonggi-do, South Korea)</div>
             </div>
+            <div class="when">2025-08 — Current</div>
+          </div>
+
+          <ul>
+            <li>Supported Micro-LED device research by assisting with fabrication flow execution and maintaining consistent sample preparation and process documentation.</li>
+            <li>Conducted passivation comparisons (e.g., Al₂O₃ vs. SiO₂) and evaluated their influence on device performance, stability, and sidewall-related leakage behavior.</li>
+            <li>Performed iterative troubleshooting by optimizing process conditions and validating improvements through repeated electrical/optical measurements.</li>
+            <li>Carried out multi-modal characterization using SEM, confocal microscopy, and 3D surface profiling to assess etch quality, geometry, and surface integrity.</li>
+            <li>Analyzed Raman spectra to investigate carrier-related signatures, strain trends, and phonon mode changes, linking spectroscopic features to device-level phenomena.</li>
+            <li>Built structured data organization and analysis workflows to process measurement datasets efficiently and generate clear figures for reports and lab meetings.</li>
+            <li>Initiated TCAD-based simulation planning to complement experimental results, compare expected trends, and strengthen hypothesis-driven decision-making.</li>
+            <li>Collaborated closely with lab members to coordinate experimental schedules, share findings, and accelerate project progress toward defined milestones.</li>
+          </ul>
         </div>
+      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <h2>Skills & Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3>Technical Skills</h3>
-                    <ul class="skill-list">
-                        <li>Problem Solving</li>
-                        <li>Project Management</li>
-                        <li>Data Analysis</li>
-                        <li>System Design</li>
-                        <li>Quality Assurance</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <h3>Professional Skills</h3>
-                    <ul class="skill-list">
-                        <li>Communication</li>
-                        <li>Leadership</li>
-                        <li>Team Collaboration</li>
-                        <li>Strategic Planning</li>
-                        <li>Decision Making</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <h3>Additional Skills</h3>
-                    <ul class="skill-list">
-                        <li>Presentation</li>
-                        <li>Documentation</li>
-                        <li>Training & Development</li>
-                        <li>Process Optimization</li>
-                        <li>Client Relations</li>
-                    </ul>
-                </div>
-            </div>
+    <!-- EDUCATION + ACCOMPLISHMENTS -->
+    <section id="education" class="card section-card">
+      <div class="section-title">
+        <h2>Education & Highlights</h2>
+        <div class="hint">Education / Accomplishments</div>
+      </div>
+
+      <div class="grid2">
+        <div class="box">
+          <h3>Education</h3>
+          <p><b>Master of Science: Photonics and Nanoelectronics</b><br/>
+            Hanyang University — Ansan, Gyeonggi-do, South Korea<br/>
+            <span style="color:var(--muted2)">Expected: 2027.08</span>
+          </p>
         </div>
+
+        <div class="box">
+          <h3>Accomplishments</h3>
+          <ul>
+            <li>Micro-LED passivation study comparing Al₂O₃ and SiO₂; analyzed device characteristics and identified process-performance relationships.</li>
+            <li>Completed Micro-LED fabrication and characterization workflow using SEM, confocal microscopy, and 3D surface profiling for process verification.</li>
+            <li>Built a structured measurement/data-analysis workflow to improve repeatability and streamline reporting for lab meetings.</li>
+            <li>Prepared and delivered research presentations summarizing experimental design, results, and next-step plans.</li>
+            <li>Completed hands-on training in display measurement and analysis equipment (e.g., SEM/AFM/optical measurement modules).</li>
+            <li>Contributed to literature review and theory-building for Raman analysis targeting carrier/strain/phonon-mode changes in Micro-LEDs.</li>
+            <li>Initiated TCAD process/device simulation planning to complement experimental results and support hypothesis-driven optimization.</li>
+            <li>Collaborated in cross-lab project coordination, aligning experiment schedules and deliverables for efficient execution.</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- Work History Section -->
-    <section id="experience">
-        <div class="container">
-            <h2>Work History</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Professional Position</h3>
-                        <div class="timeline-date">Current - Present</div>
-                        <div class="timeline-description">
-                            Describe your current role, key responsibilities, and achievements in this position.
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Previous Professional Role</h3>
-                        <div class="timeline-date">YYYY - YYYY</div>
-                        <div class="timeline-description">
-                            Describe your previous position, accomplishments, and contributions to the organization.
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Earlier Career Position</h3>
-                        <div class="timeline-date">YYYY - YYYY</div>
-                        <div class="timeline-description">
-                            Share details about your earlier career experiences and professional growth.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- PROJECTS (AUTO FROM GITHUB) -->
+    <section id="projects" class="card section-card">
+      <div class="section-title">
+        <h2>Projects</h2>
+        <div class="hint">Auto-loaded from GitHub (latest updates)</div>
+      </div>
+
+      <div id="projectsStatus" class="box" style="margin-top:10px;">
+        <h3>Loading…</h3>
+        <p>Fetching repositories from <a href="https://github.com/gojuhwan" target="_blank" rel="noopener">github.com/gojuhwan</a></p>
+      </div>
+
+      <div id="projectsGrid" class="proj-grid" aria-label="GitHub repositories" style="display:none;"></div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education">
-        <div class="container">
-            <h2>Education</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Degree/Certification Name</h3>
-                        <div class="timeline-date">Graduation Year</div>
-                        <div class="timeline-description">
-                            Institution Name | Major/Specialization
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Additional Qualification</h3>
-                        <div class="timeline-date">Completion Year</div>
-                        <div class="timeline-description">
-                            Institute/Organization | Course Name or Specialization
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Professional Certification</h3>
-                        <div class="timeline-date">Year</div>
-                        <div class="timeline-description">
-                            Certifying Body | Certification Name
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- SKILLS -->
+    <section id="skills" class="card section-card">
+      <div class="section-title">
+        <h2>Skills</h2>
+        <div class="hint">Core strengths</div>
+      </div>
+
+      <div class="grid3">
+        <div class="box">
+          <h3>Research & Process</h3>
+          <p>Experimental design, process documentation, troubleshooting, quality control mindset.</p>
         </div>
+        <div class="box">
+          <h3>Analysis</h3>
+          <p>Dataset analysis, figure generation, interpretation of trends across electrical/optical/spectroscopic results.</p>
+        </div>
+        <div class="box">
+          <h3>Collaboration</h3>
+          <p>Project support, cross-lab coordination, clear reporting for lab meetings and milestones.</p>
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-top:14px;">
+        <div class="box">
+          <h3>Software</h3>
+          <ul>
+            <li>Lumerical FDTD — Advanced</li>
+            <li>Python — Advanced</li>
+            <li>MATLAB — Advanced</li>
+            <li>TCAD — Advanced</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h3>Languages & Interests</h3>
+          <ul>
+            <li>English — Professional Working</li>
+            <li>Brazilian Jiu-Jitsu (BJJ): discipline, resilience, composure under pressure; iterative learning through repetition and reflection—skills I bring into research and teamwork.</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- Accomplishments Section -->
-    <section id="accomplishments">
-        <div class="container">
-            <h2>Key Accomplishments</h2>
-            <div class="accomplishments-grid">
-                <div class="accomplishment-card">
-                    <h3>🏆 Major Achievement</h3>
-                    <p>Describe a significant accomplishment, project success, or recognition you've received in your career.</p>
-                </div>
-                <div class="accomplishment-card">
-                    <h3>📈 Milestone Reached</h3>
-                    <p>Share a milestone, improvement, or success metric from your professional journey.</p>
-                </div>
-                <div class="accomplishment-card">
-                    <h3>🎯 Notable Project</h3>
-                    <p>Highlight a significant project you led or contributed to, and its impact on the organization.</p>
-                </div>
-                <div class="accomplishment-card">
-                    <h3>🌟 Industry Recognition</h3>
-                    <p>Share any awards, recognitions, or industry accolades you've received.</p>
-                </div>
-                <div class="accomplishment-card">
-                    <h3>💡 Innovation</h3>
-                    <p>Describe innovative solutions or process improvements you've implemented.</p>
-                </div>
-                <div class="accomplishment-card">
-                    <h3>👥 Leadership Impact</h3>
-                    <p>Share how you've made a positive impact through leadership or mentoring others.</p>
-                </div>
-            </div>
+    <!-- CONTACT -->
+    <section id="contact" class="card section-card">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <div class="hint">Let’s connect</div>
+      </div>
+
+      <div class="grid2">
+        <div class="box">
+          <h3>Email</h3>
+          <p><a href="mailto:rhwnghks00@hanyang.ac.kr">rhwnghks00@hanyang.ac.kr</a></p>
         </div>
+        <div class="box">
+          <h3>GitHub</h3>
+          <p><a href="https://github.com/gojuhwan" target="_blank" rel="noopener">github.com/gojuhwan</a></p>
+        </div>
+      </div>
+
+      <div class="cta" style="margin-top:14px;">
+        <a class="btn primary" href="mailto:rhwnghks00@hanyang.ac.kr">Email Me</a>
+        <a class="btn" href="https://gojuhwan.github.io/juhwan_homepage/" target="_blank" rel="noopener">Open Live Site</a>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <div class="contact-section">
-                <p style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-light);">
-                    I'd love to hear from you. Feel free to reach out for collaborations or just a friendly hello!
-                </p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Email</h4>
-                        <a href="mailto:your.email@example.com">your.email@example.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Phone</h4>
-                        <a href="tel:+1234567890">+1 (234) 567-890</a>
-                    </div>
-                    <div class="contact-item">
-                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">LinkedIn</h4>
-                        <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn Profile</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Juhwan Go. All rights reserved.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Last Updated: December 2025</p>
-        </div>
+      <div>© <span id="year"></span> Juhwan Ko</div>
+      <div style="color:var(--muted2)">Built for GitHub Pages • Single-file HTML</div>
     </footer>
+  </div>
+
+  <script>
+    // footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // smooth scroll for in-page links (optional)
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        if (!id || id === "#") return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.pushState(null, "", id);
+      });
+    });
+
+    // GitHub Projects: fetch latest updated repos
+    async function loadRepos() {
+      const status = document.getElementById("projectsStatus");
+      const grid = document.getElementById("projectsGrid");
+
+      try {
+        const res = await fetch("https://api.github.com/users/gojuhwan/repos?per_page=100&sort=updated");
+        if (!res.ok) throw new Error("GitHub API error: " + res.status);
+
+        const repos = await res.json();
+
+        // filter + sort
+        const filtered = repos
+          .filter(r => !r.fork)
+          .sort((a,b) => new Date(b.pushed_at) - new Date(a.pushed_at))
+          .slice(0, 6);
+
+        if (!filtered.length) {
+          status.innerHTML = "<h3>No repositories found</h3><p>Make sure repositories are public or add a manual projects section.</p>";
+          return;
+        }
+
+        grid.innerHTML = filtered.map(r => {
+          const desc = (r.description || "No description").replaceAll("<","&lt;").replaceAll(">","&gt;");
+          const lang = r.language ? r.language : "—";
+          const stars = typeof r.stargazers_count === "number" ? r.stargazers_count : 0;
+          const updated = new Date(r.pushed_at).toLocaleDateString();
+
+          return `
+            <a class="proj" href="${r.html_url}" target="_blank" rel="noopener">
+              <div class="top">
+                <div class="name">${r.name}</div>
+                <div class="tag">↗</div>
+              </div>
+              <p class="desc">${desc}</p>
+              <div class="meta">
+                <span class="tag">Lang: ${lang}</span>
+                <span class="tag">★ ${stars}</span>
+                <span class="tag">Updated: ${updated}</span>
+              </div>
+            </a>
+          `;
+        }).join("");
+
+        status.style.display = "none";
+        grid.style.display = "grid";
+      } catch (err) {
+        status.innerHTML = `
+          <h3>Couldn’t load GitHub repos</h3>
+          <p style="color:rgba(255,255,255,.72)">
+            ${String(err)}
+          </p>
+          <p style="color:rgba(255,255,255,.55)">
+            (Tip) If GitHub API rate limit happens, refresh later or add a manual projects section.
+          </p>
+        `;
+      }
+    }
+
+    loadRepos();
+  </script>
 </body>
 </html>
