@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to Juhwan's Homepage">
-    <title>Juhwan's Homepage</title>
+    <title>Juhwan Go - Professional Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -12,281 +11,664 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #ecf0f1;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --white: #ffffff;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            color: var(--text-dark);
+            background-color: var(--white);
         }
 
+        /* Navigation */
         header {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            color: #ddd;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         nav {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 1rem 0;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
         }
 
         nav a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
-            margin: 0 1.5rem;
-            font-size: 1rem;
             transition: color 0.3s ease;
         }
 
         nav a:hover {
-            color: #667eea;
+            color: var(--secondary-color);
         }
 
+        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
-        main {
-            padding: 3rem 0;
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            background-color: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid var(--white);
+            overflow: hidden;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: #ecf0f1;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: transparent;
+            color: var(--white);
+        }
+
+        /* Section Styling */
         section {
-            background: white;
-            margin: 2rem 0;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--light-bg);
         }
 
-        section h2 {
-            color: #667eea;
-            margin-bottom: 1rem;
-            font-size: 2rem;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 0.5rem;
+        section:last-child {
+            border-bottom: none;
         }
 
-        section p {
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
             margin-bottom: 1rem;
+            color: var(--text-light);
             line-height: 1.8;
         }
 
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .skill-item {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 6px;
-            border-left: 4px solid #667eea;
-        }
-
-        .skill-item h3 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        .projects {
+        /* Skills Section */
+        .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            margin-top: 1rem;
         }
 
-        .project-card {
-            background: #f8f9fa;
-            padding: 1.5rem;
+        .skill-card {
+            background-color: var(--light-bg);
+            padding: 2rem;
             border-radius: 8px;
-            border: 2px solid #667eea;
+            text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .project-card:hover {
+        .skill-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .project-card h3 {
-            color: #667eea;
+        .skill-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            text-align: left;
+            display: inline-block;
+        }
+
+        .skill-list li {
+            list-style: none;
+            padding: 0.5rem 0;
+            color: var(--text-light);
+        }
+
+        .skill-list li::before {
+            content: '✓ ';
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: var(--secondary-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 55%;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary-color);
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            top: 0;
+            margin-top: -8px;
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-content {
+            background-color: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-color);
             margin-bottom: 0.5rem;
         }
 
-        footer {
-            background-color: rgba(0, 0, 0, 0.9);
-            color: white;
+        .timeline-date {
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Accomplishments Section */
+        .accomplishments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .accomplishment-card {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2980b9 100%);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .accomplishment-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .accomplishment-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .accomplishment-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--light-bg);
+            padding: 4rem 2rem;
+            border-radius: 8px;
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
         }
 
-        footer p {
-            margin: 0.5rem 0;
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
         }
 
-        .contact-links {
-            margin-top: 1rem;
+        .contact-item {
+            text-align: center;
         }
 
-        .contact-links a {
-            color: #667eea;
+        .contact-item a {
+            color: var(--secondary-color);
             text-decoration: none;
-            margin: 0 1rem;
+            font-weight: bold;
             transition: color 0.3s ease;
         }
 
-        .contact-links a:hover {
-            color: #764ba2;
-            text-decoration: underline;
+        .contact-item a:hover {
+            color: var(--accent-color);
         }
 
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
 
-            nav a {
-                margin: 0 0.5rem;
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
                 font-size: 0.9rem;
             }
 
-            section {
-                padding: 1.5rem;
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                margin-left: 60px !important;
+                text-align: left !important;
+            }
+
+            .timeline-item::before {
+                left: 20px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 200px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <header>
-        <h1>👋 Welcome to Juhwan's Homepage</h1>
-        <p>Developer | Creator | Tech Enthusiast</p>
+        <nav class="container">
+            <div class="logo">JG Portfolio</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#accomplishments">Accomplishments</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <main>
-        <div class="container">
-            <!-- About Section -->
-            <section id="about">
-                <h2>About Me</h2>
-                <p>
-                    Hello! I'm Juhwan, a passionate developer and creator dedicated to building innovative solutions
-                    and exploring new technologies. With a strong foundation in software development and a keen interest
-                    in emerging technologies, I strive to create meaningful projects that make a difference.
-                </p>
-                <p>
-                    I love collaborating with others, learning from the community, and pushing the boundaries of what's
-                    possible in technology. When I'm not coding, you can find me exploring new ideas or contributing to
-                    open-source projects.
-                </p>
-            </section>
-
-            <!-- Skills Section -->
-            <section id="skills">
-                <h2>Skills</h2>
-                <div class="skills">
-                    <div class="skill-item">
-                        <h3>Programming Languages</h3>
-                        <p>Python, JavaScript, Java, C++, Go</p>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Web Development</h3>
-                        <p>HTML, CSS, React, Node.js, Express</p>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Databases</h3>
-                        <p>PostgreSQL, MongoDB, Redis</p>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Tools & Technologies</h3>
-                        <p>Git, Docker, Kubernetes, AWS</p>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Design</h3>
-                        <p>UI/UX Design, Figma, Responsive Design</p>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Other</h3>
-                        <p>Agile, CI/CD, API Development</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Projects Section -->
-            <section id="projects">
-                <h2>Projects</h2>
-                <div class="projects">
-                    <div class="project-card">
-                        <h3>Project One</h3>
-                        <p>
-                            An innovative web application built with modern technologies. Features include real-time
-                            updates, seamless user experience, and robust backend architecture.
-                        </p>
-                    </div>
-                    <div class="project-card">
-                        <h3>Project Two</h3>
-                        <p>
-                            A full-stack solution designed to solve complex problems. Demonstrates expertise in frontend
-                            and backend development with scalable infrastructure.
-                        </p>
-                    </div>
-                    <div class="project-card">
-                        <h3>Project Three</h3>
-                        <p>
-                            An open-source contribution that gained community recognition. Showcases problem-solving skills
-                            and collaboration abilities with a global development team.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact">
-                <h2>Get In Touch</h2>
-                <p>
-                    I'd love to hear from you! Whether you have a project in mind, a collaboration opportunity, or just
-                    want to connect, feel free to reach out.
-                </p>
-                <div class="contact-links">
-                    <a href="mailto:juhwan@example.com">📧 Email</a>
-                    <a href="https://github.com/gojuhwan" target="_blank">🐙 GitHub</a>
-                    <a href="https://linkedin.com" target="_blank">💼 LinkedIn</a>
-                    <a href="https://twitter.com" target="_blank">𝕏 Twitter</a>
-                </div>
-            </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="profile-photo">
+                <img src="https://via.placeholder.com/150" alt="Profile Photo">
+            </div>
+            <h1>Juhwan Go</h1>
+            <p class="subtitle">Professional Portfolio</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
         </div>
-    </main>
+    </section>
 
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Welcome to my professional portfolio. I'm a dedicated professional with a passion for excellence and continuous learning.</p>
+                    <p>With a strong background in my field, I bring expertise, creativity, and a commitment to delivering high-quality results. My approach combines technical proficiency with practical problem-solving skills.</p>
+                    <p>I believe in building meaningful professional relationships and contributing positively to every project I undertake. When I'm not working, I enjoy staying updated with industry trends and pursuing personal development initiatives.</p>
+                </div>
+                <div class="about-image">
+                    <div style="background-color: var(--light-bg); padding: 2rem; border-radius: 8px; text-align: center; height: 100%;">
+                        <p style="color: var(--text-light);">Additional information and professional summary</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Technical Skills</h3>
+                    <ul class="skill-list">
+                        <li>Problem Solving</li>
+                        <li>Project Management</li>
+                        <li>Data Analysis</li>
+                        <li>System Design</li>
+                        <li>Quality Assurance</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Professional Skills</h3>
+                    <ul class="skill-list">
+                        <li>Communication</li>
+                        <li>Leadership</li>
+                        <li>Team Collaboration</li>
+                        <li>Strategic Planning</li>
+                        <li>Decision Making</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Additional Skills</h3>
+                    <ul class="skill-list">
+                        <li>Presentation</li>
+                        <li>Documentation</li>
+                        <li>Training & Development</li>
+                        <li>Process Optimization</li>
+                        <li>Client Relations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work History Section -->
+    <section id="experience">
+        <div class="container">
+            <h2>Work History</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Professional Position</h3>
+                        <div class="timeline-date">Current - Present</div>
+                        <div class="timeline-description">
+                            Describe your current role, key responsibilities, and achievements in this position.
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Previous Professional Role</h3>
+                        <div class="timeline-date">YYYY - YYYY</div>
+                        <div class="timeline-description">
+                            Describe your previous position, accomplishments, and contributions to the organization.
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Earlier Career Position</h3>
+                        <div class="timeline-date">YYYY - YYYY</div>
+                        <div class="timeline-description">
+                            Share details about your earlier career experiences and professional growth.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Degree/Certification Name</h3>
+                        <div class="timeline-date">Graduation Year</div>
+                        <div class="timeline-description">
+                            Institution Name | Major/Specialization
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Additional Qualification</h3>
+                        <div class="timeline-date">Completion Year</div>
+                        <div class="timeline-description">
+                            Institute/Organization | Course Name or Specialization
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Professional Certification</h3>
+                        <div class="timeline-date">Year</div>
+                        <div class="timeline-description">
+                            Certifying Body | Certification Name
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accomplishments Section -->
+    <section id="accomplishments">
+        <div class="container">
+            <h2>Key Accomplishments</h2>
+            <div class="accomplishments-grid">
+                <div class="accomplishment-card">
+                    <h3>🏆 Major Achievement</h3>
+                    <p>Describe a significant accomplishment, project success, or recognition you've received in your career.</p>
+                </div>
+                <div class="accomplishment-card">
+                    <h3>📈 Milestone Reached</h3>
+                    <p>Share a milestone, improvement, or success metric from your professional journey.</p>
+                </div>
+                <div class="accomplishment-card">
+                    <h3>🎯 Notable Project</h3>
+                    <p>Highlight a significant project you led or contributed to, and its impact on the organization.</p>
+                </div>
+                <div class="accomplishment-card">
+                    <h3>🌟 Industry Recognition</h3>
+                    <p>Share any awards, recognitions, or industry accolades you've received.</p>
+                </div>
+                <div class="accomplishment-card">
+                    <h3>💡 Innovation</h3>
+                    <p>Describe innovative solutions or process improvements you've implemented.</p>
+                </div>
+                <div class="accomplishment-card">
+                    <h3>👥 Leadership Impact</h3>
+                    <p>Share how you've made a positive impact through leadership or mentoring others.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-section">
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-light);">
+                    I'd love to hear from you. Feel free to reach out for collaborations or just a friendly hello!
+                </p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Email</h4>
+                        <a href="mailto:your.email@example.com">your.email@example.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Phone</h4>
+                        <a href="tel:+1234567890">+1 (234) 567-890</a>
+                    </div>
+                    <div class="contact-item">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">LinkedIn</h4>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Juhwan's Homepage. All rights reserved.</p>
-        <p>Last Updated: 2025-12-18</p>
+        <div class="container">
+            <p>&copy; 2025 Juhwan Go. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Last Updated: December 2025</p>
+        </div>
     </footer>
 </body>
 </html>
