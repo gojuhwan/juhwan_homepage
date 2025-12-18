@@ -1,30 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Juhwan Ko - Photonics & Nanoelectronics | Micro-LED Research" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="Juhwan Ko — Photonics & Nanoelectronics | Micro-LED research portfolio" />
   <title>Juhwan Ko | Portfolio</title>
 
   <style>
     :root{
-      --bg: #0b1020;
+      --bg0:#070b16;
+      --bg1:#0b1020;
       --card: rgba(255,255,255,.06);
       --card2: rgba(255,255,255,.09);
+      --line: rgba(255,255,255,.12);
       --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.72);
+      --muted: rgba(255,255,255,.70);
       --muted2: rgba(255,255,255,.55);
-      --line: rgba(255,255,255,.14);
       --accent: #7dd3fc;
       --accent2:#a78bfa;
       --shadow: 0 18px 45px rgba(0,0,0,.35);
-      --radius: 18px;
-      --radius2: 24px;
+      --r: 18px;
+      --r2: 24px;
       --max: 1100px;
     }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
@@ -32,20 +33,14 @@
       background:
         radial-gradient(1200px 600px at 80% -10%, rgba(167,139,250,.22), transparent 55%),
         radial-gradient(1000px 550px at 10% 0%, rgba(125,211,252,.18), transparent 55%),
-        linear-gradient(180deg, #070b16, #0b1020 35%, #070b16 100%);
+        linear-gradient(180deg, var(--bg0), var(--bg1) 35%, var(--bg0) 100%);
       overflow-x:hidden;
     }
+    a{ color: inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; text-underline-offset: 4px; }
 
-    a{ color: inherit; text-decoration: none; }
-    a:hover{ text-decoration: underline; text-underline-offset: 4px; }
-
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 70px; }
-
-    /* Top nav */
     .topbar{
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      position: sticky; top: 0; z-index: 50;
       backdrop-filter: blur(14px);
       background: rgba(7,11,22,.55);
       border-bottom: 1px solid var(--line);
@@ -54,29 +49,20 @@
       max-width: var(--max);
       margin: 0 auto;
       padding: 12px 18px;
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 12px;
+      display:flex; align-items:center; justify-content:space-between; gap: 12px;
     }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight: 700;
-      letter-spacing:.2px;
-    }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px; }
     .dot{
       width: 10px; height: 10px; border-radius: 99px;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
       box-shadow: 0 0 20px rgba(125,211,252,.35);
     }
-    .nav{
-      display:flex; gap: 12px; flex-wrap: wrap; justify-content:flex-end;
-    }
+    .nav{ display:flex; gap: 10px; flex-wrap: wrap; justify-content:flex-end; }
     .nav a{
       padding: 8px 10px;
       border-radius: 12px;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
       border: 1px solid transparent;
     }
     .nav a:hover{
@@ -85,231 +71,182 @@
       color: var(--text);
       text-decoration:none;
     }
+    .lang{
+      display:flex; gap:8px; align-items:center;
+    }
+    .toggle{
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor:pointer;
+    }
+    .toggle.active{
+      background: linear-gradient(135deg, rgba(125,211,252,.22), rgba(167,139,250,.18));
+      border-color: rgba(255,255,255,.18);
+    }
+
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 26px 18px 70px; }
+
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--r2);
+      box-shadow: var(--shadow);
+    }
 
     /* Hero */
     .hero{
       display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 22px;
-      margin-top: 26px;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      margin-top: 20px;
       align-items: stretch;
     }
-    .card{
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
+    .hero-left{ padding: 24px; position: relative; overflow:hidden; }
+    .hero-left:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 240px at 10% 0%, rgba(125,211,252,.16), transparent 60%),
+                  radial-gradient(700px 260px at 95% 10%, rgba(167,139,250,.14), transparent 60%);
+      pointer-events:none;
     }
-    .hero-left{ padding: 26px; }
+    .hero-left > *{ position:relative; }
+
     .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
+      display:inline-flex; align-items:center; gap:10px;
       padding: 8px 12px;
       border-radius: 999px;
       background: rgba(255,255,255,.06);
       border: 1px solid rgba(255,255,255,.10);
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12.5px;
     }
-    .kicker b{ color: var(--text); font-weight: 700; }
+    .kicker b{ color: var(--text); font-weight: 800; }
+
     h1{
       margin: 14px 0 8px;
       font-size: clamp(30px, 4vw, 44px);
       line-height: 1.06;
-      letter-spacing: -.6px;
+      letter-spacing: -.7px;
     }
     .subtitle{
-      margin: 0 0 16px;
+      margin: 0 0 14px;
       color: var(--muted);
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: 15px;
+      line-height: 1.65;
     }
-    .pillrow{ display:flex; gap:10px; flex-wrap: wrap; margin: 14px 0 18px; }
+
+    .pillrow{ display:flex; gap:10px; flex-wrap:wrap; margin: 12px 0 16px; }
     .pill{
-      font-size: 13px;
+      font-size: 12.5px;
       padding: 8px 10px;
       border-radius: 999px;
       background: rgba(125,211,252,.12);
-      border: 1px solid rgba(125,211,252,.25);
+      border: 1px solid rgba(125,211,252,.24);
       color: rgba(255,255,255,.88);
     }
-    .pill.alt{
-      background: rgba(167,139,250,.12);
-      border-color: rgba(167,139,250,.25);
-    }
+    .pill.alt{ background: rgba(167,139,250,.12); border-color: rgba(167,139,250,.24); }
 
-    .cta{
-      display:flex; gap: 10px; flex-wrap: wrap; margin-top: 18px;
-    }
+    .cta{ display:flex; gap: 10px; flex-wrap:wrap; margin-top: 16px; }
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding: 11px 14px;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.06);
       color: var(--text);
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
+      font-weight: 800;
+      font-size: 13.5px;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease;
     }
     .btn.primary{
-      background: linear-gradient(135deg, rgba(125,211,252,.24), rgba(167,139,250,.20));
+      background: linear-gradient(135deg, rgba(125,211,252,.24), rgba(167,139,250,.18));
       border-color: rgba(255,255,255,.18);
     }
-    .btn:hover{ transform: translateY(-1px); }
+    .btn:hover{ transform: translateY(-1px); text-decoration:none; }
     .btn:active{ transform: translateY(0px); }
 
-    .hero-right{
-      padding: 18px;
-      display:flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+    .hero-right{ padding: 18px; display:flex; flex-direction:column; gap: 12px; }
     .profile{
-      display:flex;
-      gap: 14px;
-      align-items: center;
+      display:flex; gap: 14px; align-items:center;
       padding: 14px;
-      border-radius: var(--radius);
+      border-radius: var(--r);
       background: rgba(255,255,255,.05);
       border: 1px solid rgba(255,255,255,.10);
     }
     .avatar{
-      width: 84px; height: 84px; border-radius: 18px;
+      width: 86px; height: 86px; border-radius: 18px;
       background: rgba(255,255,255,.08);
       border: 1px solid rgba(255,255,255,.14);
-      overflow:hidden;
-      flex: 0 0 auto;
+      overflow:hidden; flex: 0 0 auto;
     }
-    .avatar img{
-      width:100%; height:100%;
-      object-fit: cover;
-      display:block;
-    }
-    .pname{ font-weight: 800; margin:0; }
-    .prole{ margin: 4px 0 0; color: var(--muted); font-size: 13px; line-height: 1.35; }
-
+    .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .pname{ margin:0; font-weight: 900; letter-spacing:-.2px; }
+    .prole{ margin: 4px 0 0; color: var(--muted); font-size: 12.8px; line-height: 1.35; }
     .info{
       padding: 14px;
-      border-radius: var(--radius);
+      border-radius: var(--r);
       background: rgba(255,255,255,.05);
       border: 1px solid rgba(255,255,255,.10);
     }
-    .info .row{
-      display:flex; align-items:center; justify-content: space-between;
-      gap: 10px;
+    .row{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
       padding: 8px 0;
       border-bottom: 1px solid rgba(255,255,255,.08);
-      font-size: 13px;
+      font-size: 12.8px;
     }
-    .info .row:last-child{ border-bottom:none; }
+    .row:last-child{ border-bottom:none; }
     .label{ color: var(--muted2); }
     .value{ color: var(--text); text-align:right; overflow-wrap:anywhere; }
 
     /* Sections */
-    section{ margin-top: 22px; }
-    .section-card{ padding: 22px; }
+    section{ margin-top: 16px; }
+    .section-card{ padding: 20px; }
     .section-title{
-      display:flex; align-items:center; justify-content: space-between; gap: 12px;
-      margin: 0 0 12px;
+      display:flex; align-items:baseline; justify-content:space-between; gap: 12px;
+      margin: 0 0 10px;
     }
-    .section-title h2{
-      margin: 0;
-      font-size: 18px;
-      letter-spacing: -.2px;
-    }
-    .section-title .hint{ color: var(--muted2); font-size: 13px; }
+    .section-title h2{ margin:0; font-size: 16.5px; letter-spacing:-.2px; }
+    .hint{ color: var(--muted2); font-size: 12.5px; }
 
-    .grid2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
+    .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .grid3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
     .box{
-      padding: 16px;
-      border-radius: var(--radius);
+      padding: 14px;
+      border-radius: var(--r);
       background: rgba(255,255,255,.05);
       border: 1px solid rgba(255,255,255,.10);
+      transition: transform .12s ease, background .12s ease;
     }
-    .box h3{
-      margin: 0 0 8px;
-      font-size: 14px;
-      letter-spacing: -.1px;
-    }
-    .box p{
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.65;
-    }
+    .box:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); }
 
-    ul{
-      margin: 10px 0 0 18px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 14px;
-    }
-    li{ margin: 6px 0; }
-
-    .timeline{
-      display:flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 10px;
-    }
-    .titem{
-      padding: 16px;
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    .tmeta{
-      display:flex; flex-wrap: wrap; gap: 10px;
-      align-items: baseline;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-    .tmeta .when{ color: var(--muted2); font-size: 13px; }
-    .tmeta .role{ font-weight: 800; }
-    .tmeta .where{ color: var(--muted); font-size: 13px; }
+    .box h3{ margin:0 0 8px; font-size: 13.5px; letter-spacing:-.1px; }
+    .box p{ margin:0; color: var(--muted); font-size: 13.5px; line-height:1.62; }
+    ul{ margin: 8px 0 0 18px; color: var(--muted); font-size: 13.5px; line-height:1.7; }
+    li{ margin: 5px 0; }
 
     /* Projects */
-    .proj-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 10px;
-    }
+    .proj-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 10px; }
     .proj{
-      padding: 16px;
-      border-radius: var(--radius);
+      padding: 14px;
+      border-radius: var(--r);
       background: rgba(255,255,255,.05);
       border: 1px solid rgba(255,255,255,.10);
-      display:flex;
-      flex-direction: column;
-      gap: 10px;
-      min-height: 150px;
+      display:flex; flex-direction:column; gap:10px;
+      min-height: 165px;
+      transition: transform .12s ease, background .12s ease;
     }
-    .proj .top{
-      display:flex; align-items:flex-start; justify-content: space-between; gap: 10px;
-    }
-    .proj .name{ font-weight: 800; }
-    .proj .desc{ color: var(--muted); font-size: 13px; line-height: 1.55; margin: 0; }
-    .proj .meta{
-      display:flex; gap: 10px; flex-wrap: wrap;
-      margin-top:auto;
-      color: var(--muted2);
-      font-size: 12px;
-    }
+    .proj:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); text-decoration:none; }
+    .proj .top{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+    .proj .name{ font-weight: 900; letter-spacing:-.2px; }
+    .proj .desc{ margin:0; color: var(--muted); font-size: 12.8px; line-height: 1.55; }
+    .meta{ display:flex; gap: 8px; flex-wrap: wrap; margin-top:auto; color: var(--muted2); font-size: 12px; }
     .tag{
       padding: 6px 8px;
       border-radius: 999px;
@@ -317,26 +254,38 @@
       border: 1px solid rgba(255,255,255,.10);
     }
 
-    /* Footer */
+    /* Timeline (compact) */
+    .timeline{ display:flex; flex-direction:column; gap: 10px; margin-top: 10px; }
+    .titem{
+      padding: 14px;
+      border-radius: var(--r);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .tmeta{
+      display:flex; flex-wrap:wrap; gap: 8px;
+      align-items:baseline; justify-content:space-between;
+      margin-bottom: 6px;
+    }
+    .role{ font-weight: 900; }
+    .where{ color: var(--muted); font-size: 12.5px; }
+    .when{ color: var(--muted2); font-size: 12.5px; }
+
     footer{
-      margin-top: 26px;
-      padding-top: 18px;
+      margin-top: 18px;
+      padding-top: 16px;
       border-top: 1px solid var(--line);
       color: var(--muted2);
-      font-size: 13px;
-      display:flex;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
+      font-size: 12.8px;
+      display:flex; justify-content:space-between; gap: 10px; flex-wrap: wrap;
     }
 
-    /* Responsive */
     @media (max-width: 980px){
+      .nav{ display:none; }
       .hero{ grid-template-columns: 1fr; }
       .grid2{ grid-template-columns: 1fr; }
       .grid3{ grid-template-columns: 1fr; }
       .proj-grid{ grid-template-columns: 1fr; }
-      .nav{ display:none; }
     }
   </style>
 </head>
@@ -348,14 +297,19 @@
         <span class="dot"></span>
         <span>Juhwan Ko</span>
       </div>
+
       <nav class="nav" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
+        <a href="#now">Now</a>
+        <a href="#highlights">Highlights</a>
+        <a href="#work">Work</a>
+        <a href="#timeline">Timeline</a>
         <a href="#contact">Contact</a>
       </nav>
+
+      <div class="lang" aria-label="Language toggle">
+        <button class="toggle active" id="btnKo" type="button">KR</button>
+        <button class="toggle" id="btnEn" type="button">EN</button>
+      </div>
     </div>
   </div>
 
@@ -364,198 +318,255 @@
     <div class="hero">
       <div class="card hero-left">
         <div class="kicker">
-          <span>🎓</span>
-          <span><b>M.S. Student</b> | Photonics & Nanoelectronics</span>
+          <span>🧪</span>
+          <span data-i18n="kicker"><b>M.S. Student</b> | Photonics & Nanoelectronics</span>
         </div>
 
-        <h1>Micro-LED Researcher<br/>focused on fabrication & characterization</h1>
+        <h1 data-i18n="heroTitle">I build better devices by connecting<br/>process, measurement, and data.</h1>
 
-        <p class="subtitle">
-          I work on Micro-LED device research, including passivation optimization (Al₂O₃ vs. SiO₂),
-          process troubleshooting, and multi-modal analysis (SEM, confocal microscopy, 3D profiling, Raman).
-          I also build structured measurement/data workflows and explore TCAD-based simulation planning.
+        <p class="subtitle" data-i18n="heroSub">
+          Micro-LED 중심으로 공정(가공) ↔ 특성평가 ↔ 데이터 분석을 한 흐름으로 엮어 문제를 정의하고,
+          반복 실험과 정리된 리포팅으로 “다음 액션이 명확한 결과”를 만드는 걸 좋아합니다.
         </p>
 
-        <div class="pillrow">
-          <span class="pill">Micro-LED Passivation</span>
-          <span class="pill alt">Raman Spectroscopy</span>
-          <span class="pill">Device Characterization</span>
-          <span class="pill alt">Process Optimization</span>
-          <span class="pill">Data Analysis</span>
-          <span class="pill alt">TCAD Planning</span>
+        <div class="pillrow" aria-label="Key tags">
+          <span class="pill">Micro-LED</span>
+          <span class="pill alt">Passivation</span>
+          <span class="pill">Characterization</span>
+          <span class="pill alt">Raman</span>
+          <span class="pill">Python</span>
+          <span class="pill alt">TCAD planning</span>
         </div>
 
         <div class="cta">
-          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn primary" href="#work" data-i18n="ctaWork">Selected Work</a>
           <a class="btn" href="https://github.com/gojuhwan" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn" href="mailto:rhwnghks00@hanyang.ac.kr">Email</a>
+          <a class="btn" href="mailto:rhwnghks00@hanyang.ac.kr" data-i18n="ctaEmail">Email</a>
         </div>
       </div>
 
       <div class="card hero-right">
         <div class="profile">
           <div class="avatar" title="Profile photo">
-            <!-- Put your photo as image.jpg in the repo root -->
+            <!-- repo 루트에 image.jpg 넣어두면 자동 표시 -->
             <img src="image.jpg" alt="Juhwan Ko profile photo" onerror="this.style.display='none'" />
           </div>
           <div>
             <p class="pname">Juhwan Ko</p>
-            <p class="prole">M.S. Student (Photonics & Nanoelectronics)<br/>Hanyang University, South Korea</p>
+            <p class="prole" data-i18n="profileSub">
+              Hanyang Univ. ERICA<br/>
+              Dept. of Photonics and Nanoelectronics<br/>
+              Micro-LED / measurement / analysis
+            </p>
           </div>
         </div>
 
-        <div class="info" aria-label="Contact summary">
-          <div class="row"><span class="label">Location</span><span class="value">Bucheon-si, South Korea 14554</span></div>
-          <div class="row"><span class="label">Phone</span><span class="value">+82 10-3439-7567</span></div>
-          <div class="row"><span class="label">Email</span><span class="value"><a href="mailto:rhwnghks00@hanyang.ac.kr">rhwnghks00@hanyang.ac.kr</a></span></div>
-          <div class="row"><span class="label">GitHub</span><span class="value"><a href="https://github.com/gojuhwan" target="_blank" rel="noopener">github.com/gojuhwan</a></span></div>
+        <div class="info" aria-label="Quick info">
+          <div class="row">
+            <span class="label" data-i18n="infoFocusL">Focus</span>
+            <span class="value" data-i18n="infoFocusV">Micro-LED device R&D</span>
+          </div>
+          <div class="row">
+            <span class="label" data-i18n="infoEduL">Education</span>
+            <span class="value" data-i18n="infoEduV">B.S. → M.S. (same dept.)</span>
+          </div>
+          <div class="row">
+            <span class="label">GitHub</span>
+            <span class="value"><a href="https://github.com/gojuhwan" target="_blank" rel="noopener">github.com/gojuhwan</a></span>
+          </div>
+          <div class="row">
+            <span class="label">Email</span>
+            <span class="value"><a href="mailto:rhwnghks00@hanyang.ac.kr">rhwnghks00@hanyang.ac.kr</a></span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- ABOUT -->
-    <section id="about" class="card section-card">
+    <!-- NOW -->
+    <section id="now" class="card section-card">
       <div class="section-title">
-        <h2>About</h2>
-        <div class="hint">Summary</div>
+        <h2>Now</h2>
+        <div class="hint" data-i18n="nowHint">What I’m working on lately</div>
       </div>
 
       <div class="grid2">
         <div class="box">
-          <h3>Profile</h3>
-          <p>
-            Adaptable and curious researcher with a strong interest in translating experimental observations
-            into actionable process improvements. Comfortable working across fabrication, characterization,
-            and data organization/analysis for lab reporting and decision-making.
+          <h3 data-i18n="now1t">Micro-LED passivation & reliability</h3>
+          <p data-i18n="now1d">
+            Al₂O₃ vs SiO₂ 등 passivation 조건을 비교하고, sidewall 누설/안정성 트렌드를
+            측정 데이터로 정리해 “개선 방향이 보이는 결론”으로 연결합니다.
           </p>
         </div>
         <div class="box">
-          <h3>Research Interests</h3>
-          <p>
-            Micro-LED passivation and sidewall leakage mechanisms, reliability/stability trends,
-            Raman-based analysis (carrier/strain/phonon-mode changes), and hypothesis-driven planning
-            using TCAD process/device simulations.
+          <h3 data-i18n="now2t">Raman-based insight building</h3>
+          <p data-i18n="now2d">
+            Raman 스펙트럼에서 carrier/strain/phonon mode 변화를 읽어내고,
+            전기적 특성과 함께 해석할 수 있는 분석 프레임을 잡는 중입니다.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="card section-card">
+    <!-- HIGHLIGHTS -->
+    <section id="highlights" class="card section-card">
       <div class="section-title">
-        <h2>Experience</h2>
-        <div class="hint">Work History</div>
+        <h2>Highlights</h2>
+        <div class="hint" data-i18n="hiHint">Compact but clear</div>
       </div>
 
-      <div class="timeline">
-        <div class="titem">
-          <div class="tmeta">
-            <div>
-              <div class="role">M.S. Student Researcher</div>
-              <div class="where">Hanyang University, Dept. of Photonics and Nanoelectronics (Ansan, Gyeonggi-do, South Korea)</div>
-            </div>
-            <div class="when">2025-08 — Current</div>
+      <div class="grid3">
+        <div class="box">
+          <h3 data-i18n="h1t">Process-first execution</h3>
+          <p data-i18n="h1d">
+            공정 흐름을 “재현 가능”하게 문서화하고, 변수를 줄여 원인-결과를 분리합니다.
+          </p>
+        </div>
+        <div class="box">
+          <h3 data-i18n="h2t">Measurement → decision</h3>
+          <p data-i18n="h2d">
+            SEM / confocal / 3D profiling / electrical-optical 측정 결과를 한 번에 읽히게 요약합니다.
+          </p>
+        </div>
+        <div class="box">
+          <h3 data-i18n="h3t">Calm iteration</h3>
+          <p data-i18n="h3d">
+            BJJ로 익힌 반복 학습/압박 상황의 침착함을 연구 루틴(반복-개선-검증)에 그대로 씁니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="card section-card">
+      <div class="section-title">
+        <h2 data-i18n="workTitle">Selected Work</h2>
+        <div class="hint" data-i18n="workHint">Pinned projects + latest updates</div>
+      </div>
+
+      <!-- Pinned / imagined but plausible -->
+      <div class="proj-grid" aria-label="Selected work (pinned)">
+        <a class="proj" href="#" onclick="return false;">
+          <div class="top">
+            <div class="name" data-i18n="p1n">Micro-LED Passivation Study</div>
+            <div class="tag">★</div>
           </div>
-
-          <ul>
-            <li>Supported Micro-LED device research by assisting with fabrication flow execution and maintaining consistent sample preparation and process documentation.</li>
-            <li>Conducted passivation comparisons (e.g., Al₂O₃ vs. SiO₂) and evaluated their influence on device performance, stability, and sidewall-related leakage behavior.</li>
-            <li>Performed iterative troubleshooting by optimizing process conditions and validating improvements through repeated electrical/optical measurements.</li>
-            <li>Carried out multi-modal characterization using SEM, confocal microscopy, and 3D surface profiling to assess etch quality, geometry, and surface integrity.</li>
-            <li>Analyzed Raman spectra to investigate carrier-related signatures, strain trends, and phonon mode changes, linking spectroscopic features to device-level phenomena.</li>
-            <li>Built structured data organization and analysis workflows to process measurement datasets efficiently and generate clear figures for reports and lab meetings.</li>
-            <li>Initiated TCAD-based simulation planning to complement experimental results, compare expected trends, and strengthen hypothesis-driven decision-making.</li>
-            <li>Collaborated closely with lab members to coordinate experimental schedules, share findings, and accelerate project progress toward defined milestones.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCATION + ACCOMPLISHMENTS -->
-    <section id="education" class="card section-card">
-      <div class="section-title">
-        <h2>Education & Highlights</h2>
-        <div class="hint">Education / Accomplishments</div>
-      </div>
-
-      <div class="grid2">
-        <div class="box">
-          <h3>Education</h3>
-          <p><b>Master of Science: Photonics and Nanoelectronics</b><br/>
-            Hanyang University — Ansan, Gyeonggi-do, South Korea<br/>
-            <span style="color:var(--muted2)">Expected: 2027.08</span>
+          <p class="desc" data-i18n="p1d">
+            Al₂O₃ vs SiO₂ 비교 실험을 설계하고, 누설/안정성 지표를 표준화하여 반복 실험 결과를 한 장으로 정리.
           </p>
-        </div>
+          <div class="meta">
+            <span class="tag">Design</span><span class="tag">QC</span><span class="tag">Reporting</span>
+          </div>
+        </a>
 
-        <div class="box">
-          <h3>Accomplishments</h3>
-          <ul>
-            <li>Micro-LED passivation study comparing Al₂O₃ and SiO₂; analyzed device characteristics and identified process-performance relationships.</li>
-            <li>Completed Micro-LED fabrication and characterization workflow using SEM, confocal microscopy, and 3D surface profiling for process verification.</li>
-            <li>Built a structured measurement/data-analysis workflow to improve repeatability and streamline reporting for lab meetings.</li>
-            <li>Prepared and delivered research presentations summarizing experimental design, results, and next-step plans.</li>
-            <li>Completed hands-on training in display measurement and analysis equipment (e.g., SEM/AFM/optical measurement modules).</li>
-            <li>Contributed to literature review and theory-building for Raman analysis targeting carrier/strain/phonon-mode changes in Micro-LEDs.</li>
-            <li>Initiated TCAD process/device simulation planning to complement experimental results and support hypothesis-driven optimization.</li>
-            <li>Collaborated in cross-lab project coordination, aligning experiment schedules and deliverables for efficient execution.</li>
-          </ul>
-        </div>
+        <a class="proj" href="#" onclick="return false;">
+          <div class="top">
+            <div class="name" data-i18n="p2n">Raman Insight Notebook</div>
+            <div class="tag">★</div>
+          </div>
+          <p class="desc" data-i18n="p2d">
+            Raman 모드/스트레인/캐리어 관련 신호를 정리하고, 스펙트럼 특징 ↔ 디바이스 현상 연결을 위한 해석 프레임 구축.
+          </p>
+          <div class="meta">
+            <span class="tag">Raman</span><span class="tag">Interpretation</span><span class="tag">Slides</span>
+          </div>
+        </a>
+
+        <a class="proj" href="#" onclick="return false;">
+          <div class="top">
+            <div class="name" data-i18n="p3n">Measurement Workflow Toolkit</div>
+            <div class="tag">★</div>
+          </div>
+          <p class="desc" data-i18n="p3d">
+            측정 데이터(Excel/CSV)를 자동 정리하고, figure 템플릿으로 결과를 빠르게 보고서 형태로 만드는 파이프라인 설계.
+          </p>
+          <div class="meta">
+            <span class="tag">Python</span><span class="tag">Automation</span><span class="tag">Figures</span>
+          </div>
+        </a>
       </div>
-    </section>
 
-    <!-- PROJECTS (AUTO FROM GITHUB) -->
-    <section id="projects" class="card section-card">
-      <div class="section-title">
-        <h2>Projects</h2>
-        <div class="hint">Auto-loaded from GitHub (latest updates)</div>
+      <!-- Latest from GitHub -->
+      <div class="section-title" style="margin-top:16px;">
+        <h2 style="font-size:14px; margin:0;" data-i18n="latestTitle">Latest on GitHub</h2>
+        <div class="hint" data-i18n="latestHint">Auto-loaded (non-fork repos)</div>
       </div>
 
       <div id="projectsStatus" class="box" style="margin-top:10px;">
-        <h3>Loading…</h3>
-        <p>Fetching repositories from <a href="https://github.com/gojuhwan" target="_blank" rel="noopener">github.com/gojuhwan</a></p>
+        <h3 style="margin:0 0 6px;">Loading…</h3>
+        <p style="margin:0; color:var(--muted);">
+          Fetching repositories from <a href="https://github.com/gojuhwan" target="_blank" rel="noopener">github.com/gojuhwan</a>
+        </p>
       </div>
 
       <div id="projectsGrid" class="proj-grid" aria-label="GitHub repositories" style="display:none;"></div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="card section-card">
+    <!-- TIMELINE -->
+    <section id="timeline" class="card section-card">
       <div class="section-title">
-        <h2>Skills</h2>
-        <div class="hint">Core strengths</div>
+        <h2 data-i18n="tlTitle">Timeline</h2>
+        <div class="hint" data-i18n="tlHint">Education + compact experience</div>
       </div>
 
-      <div class="grid3">
-        <div class="box">
-          <h3>Research & Process</h3>
-          <p>Experimental design, process documentation, troubleshooting, quality control mindset.</p>
-        </div>
-        <div class="box">
-          <h3>Analysis</h3>
-          <p>Dataset analysis, figure generation, interpretation of trends across electrical/optical/spectroscopic results.</p>
-        </div>
-        <div class="box">
-          <h3>Collaboration</h3>
-          <p>Project support, cross-lab coordination, clear reporting for lab meetings and milestones.</p>
-        </div>
-      </div>
-
-      <div class="grid2" style="margin-top:14px;">
-        <div class="box">
-          <h3>Software</h3>
+      <div class="timeline">
+        <div class="titem">
+          <div class="tmeta">
+            <div class="role" data-i18n="eduMsRole">M.S. in Photonics and Nanoelectronics</div>
+            <div class="when" data-i18n="eduMsWhen">2025.08 — Present (Expected 2027.08)</div>
+          </div>
+          <div class="where" data-i18n="eduMsWhere">Hanyang University ERICA • Same department as B.S.</div>
           <ul>
-            <li>Lumerical FDTD — Advanced</li>
-            <li>Python — Advanced</li>
-            <li>MATLAB — Advanced</li>
-            <li>TCAD — Advanced</li>
+            <li data-i18n="eduMsB1">Micro-LED device research, process optimization, and measurement analysis workflow.</li>
+            <li data-i18n="eduMsB2">Raman-based analysis framing for carrier/strain/phonon mode interpretation.</li>
           </ul>
         </div>
 
-        <div class="box">
-          <h3>Languages & Interests</h3>
+        <div class="titem">
+          <div class="tmeta">
+            <div class="role" data-i18n="eduBsRole">B.S. in Photonics and Nanoelectronics</div>
+            <div class="when" data-i18n="eduBsWhen">2019.03 — 2025.08</div>
+          </div>
+          <div class="where" data-i18n="eduBsWhere">Hanyang University ERICA</div>
           <ul>
-            <li>English — Professional Working</li>
-            <li>Brazilian Jiu-Jitsu (BJJ): discipline, resilience, composure under pressure; iterative learning through repetition and reflection—skills I bring into research and teamwork.</li>
+            <li data-i18n="eduBsB1">Graduated from the same department; built strong fundamentals in optoelectronics and device physics.</li>
+            <li data-i18n="eduBsB2">Hands-on exposure to display/device measurement and lab-style reporting.</li>
+          </ul>
+        </div>
+
+        <!-- imagined experience (for assignment) -->
+        <div class="titem">
+          <div class="tmeta">
+            <div class="role" data-i18n="ex1Role">Student Researcher (Micro-LED)</div>
+            <div class="when" data-i18n="ex1When">2025.09 — Present</div>
+          </div>
+          <div class="where" data-i18n="ex1Where">Next-Gen Nano Devices Lab (course/project style)</div>
+          <ul>
+            <li data-i18n="ex1B1">Passivation comparison experiments, measurement planning, and repeatable reporting.</li>
+            <li data-i18n="ex1B2">Multi-modal characterization: SEM / confocal / 3D profiling; basic Raman trend analysis.</li>
+          </ul>
+        </div>
+
+        <div class="titem">
+          <div class="tmeta">
+            <div class="role" data-i18n="ex2Role">Display Device R&D Internship</div>
+            <div class="when" data-i18n="ex2When">2024 Summer</div>
+          </div>
+          <div class="where" data-i18n="ex2Where">Industry-style project (assignment)</div>
+          <ul>
+            <li data-i18n="ex2B1">Supported measurement setup, weekly reporting, and experiment-to-action summaries.</li>
+            <li data-i18n="ex2B2">Improved data organization templates to reduce manual work and errors.</li>
+          </ul>
+        </div>
+
+        <div class="titem">
+          <div class="tmeta">
+            <div class="role" data-i18n="ex3Role">Teaching Assistant / Lab Mentor</div>
+            <div class="when" data-i18n="ex3When">2023 — 2024</div>
+          </div>
+          <div class="where" data-i18n="ex3Where">Undergraduate lab course support (assignment)</div>
+          <ul>
+            <li data-i18n="ex3B1">Helped students structure experiments and write concise reports.</li>
+            <li data-i18n="ex3B2">Built checklists for measurement consistency and troubleshooting.</li>
           </ul>
         </div>
       </div>
@@ -565,7 +576,7 @@
     <section id="contact" class="card section-card">
       <div class="section-title">
         <h2>Contact</h2>
-        <div class="hint">Let’s connect</div>
+        <div class="hint" data-i18n="ctHint">Simple & professional</div>
       </div>
 
       <div class="grid2">
@@ -579,27 +590,26 @@
         </div>
       </div>
 
-      <div class="cta" style="margin-top:14px;">
-        <a class="btn primary" href="mailto:rhwnghks00@hanyang.ac.kr">Email Me</a>
-        <a class="btn" href="https://gojuhwan.github.io/juhwan_homepage/" target="_blank" rel="noopener">Open Live Site</a>
+      <div class="cta" style="margin-top:12px;">
+        <a class="btn primary" href="mailto:rhwnghks00@hanyang.ac.kr" data-i18n="ctBtn1">Email me</a>
+        <a class="btn" href="#now" data-i18n="ctBtn2">Back to top</a>
       </div>
     </section>
 
     <footer>
       <div>© <span id="year"></span> Juhwan Ko</div>
-      <div style="color:var(--muted2)">Built for GitHub Pages • Single-file HTML</div>
+      <div data-i18n="footerRight">Built as a compact one-page portfolio for GitHub Pages</div>
     </footer>
   </div>
 
   <script>
-    // footer year
+    // year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // smooth scroll for in-page links (optional)
+    // smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener("click", (e) => {
         const id = a.getAttribute("href");
-        if (!id || id === "#") return;
         const el = document.querySelector(id);
         if (!el) return;
         e.preventDefault();
@@ -608,7 +618,7 @@
       });
     });
 
-    // GitHub Projects: fetch latest updated repos
+    // GitHub latest repos
     async function loadRepos() {
       const status = document.getElementById("projectsStatus");
       const grid = document.getElementById("projectsGrid");
@@ -618,15 +628,13 @@
         if (!res.ok) throw new Error("GitHub API error: " + res.status);
 
         const repos = await res.json();
-
-        // filter + sort
         const filtered = repos
           .filter(r => !r.fork)
           .sort((a,b) => new Date(b.pushed_at) - new Date(a.pushed_at))
-          .slice(0, 6);
+          .slice(0, 3);
 
         if (!filtered.length) {
-          status.innerHTML = "<h3>No repositories found</h3><p>Make sure repositories are public or add a manual projects section.</p>";
+          status.innerHTML = "<h3 style='margin:0 0 6px;'>No public repos found</h3><p style='margin:0;color:rgba(255,255,255,.72)'>Create a public repo or keep only pinned projects above.</p>";
           return;
         }
 
@@ -656,18 +664,163 @@
         grid.style.display = "grid";
       } catch (err) {
         status.innerHTML = `
-          <h3>Couldn’t load GitHub repos</h3>
-          <p style="color:rgba(255,255,255,.72)">
-            ${String(err)}
-          </p>
-          <p style="color:rgba(255,255,255,.55)">
-            (Tip) If GitHub API rate limit happens, refresh later or add a manual projects section.
-          </p>
+          <h3 style="margin:0 0 6px;">Couldn’t load GitHub repos</h3>
+          <p style="margin:0;color:rgba(255,255,255,.72)">${String(err)}</p>
+          <p style="margin:8px 0 0;color:rgba(255,255,255,.55)">If rate-limited, refresh later.</p>
         `;
       }
     }
-
     loadRepos();
+
+    // i18n (KR/EN)
+    const dict = {
+      ko: {
+        kicker: "<b>M.S. Student</b> | Photonics & Nanoelectronics",
+        heroTitle: "I build better devices by connecting<br/>process, measurement, and data.",
+        heroSub: "Micro-LED 중심으로 공정(가공) ↔ 특성평가 ↔ 데이터 분석을 한 흐름으로 엮어 문제를 정의하고, 반복 실험과 정리된 리포팅으로 “다음 액션이 명확한 결과”를 만드는 걸 좋아합니다.",
+        ctaWork: "Selected Work",
+        ctaEmail: "Email",
+        profileSub: "Hanyang Univ. ERICA<br/>Dept. of Photonics and Nanoelectronics<br/>Micro-LED / measurement / analysis",
+        infoFocusL: "Focus",
+        infoFocusV: "Micro-LED device R&D",
+        infoEduL: "Education",
+        infoEduV: "B.S. → M.S. (same dept.)",
+        nowHint: "요즘 하고 있는 것",
+        now1t: "Micro-LED passivation & reliability",
+        now1d: "Al₂O₃ vs SiO₂ 등 passivation 조건을 비교하고, sidewall 누설/안정성 트렌드를 측정 데이터로 정리해 “개선 방향이 보이는 결론”으로 연결합니다.",
+        now2t: "Raman-based insight building",
+        now2d: "Raman 스펙트럼에서 carrier/strain/phonon mode 변화를 읽어내고, 전기적 특성과 함께 해석할 수 있는 분석 프레임을 잡는 중입니다.",
+        hiHint: "짧지만 임팩트 있게",
+        h1t: "Process-first execution",
+        h1d: "공정 흐름을 “재현 가능”하게 문서화하고, 변수를 줄여 원인-결과를 분리합니다.",
+        h2t: "Measurement → decision",
+        h2d: "SEM / confocal / 3D profiling / electrical-optical 측정 결과를 한 번에 읽히게 요약합니다.",
+        h3t: "Calm iteration",
+        h3d: "BJJ로 익힌 반복 학습/압박 상황의 침착함을 연구 루틴(반복-개선-검증)에 그대로 씁니다.",
+        workTitle: "Selected Work",
+        workHint: "대표 작업 + 최신 업데이트",
+        p1n: "Micro-LED Passivation Study",
+        p1d: "Al₂O₃ vs SiO₂ 비교 실험을 설계하고, 누설/안정성 지표를 표준화하여 반복 실험 결과를 한 장으로 정리.",
+        p2n: "Raman Insight Notebook",
+        p2d: "Raman 모드/스트레인/캐리어 관련 신호를 정리하고, 스펙트럼 특징 ↔ 디바이스 현상 연결을 위한 해석 프레임 구축.",
+        p3n: "Measurement Workflow Toolkit",
+        p3d: "측정 데이터(Excel/CSV)를 자동 정리하고, figure 템플릿으로 결과를 빠르게 보고서 형태로 만드는 파이프라인 설계.",
+        latestTitle: "Latest on GitHub",
+        latestHint: "자동 로드 (fork 제외)",
+        tlTitle: "Timeline",
+        tlHint: "학력 + 컴팩트 경험",
+        eduMsRole: "M.S. in Photonics and Nanoelectronics",
+        eduMsWhen: "2025.08 — Present (Expected 2027.08)",
+        eduMsWhere: "Hanyang University ERICA • Same department as B.S.",
+        eduMsB1: "Micro-LED device research, process optimization, and measurement analysis workflow.",
+        eduMsB2: "Raman-based analysis framing for carrier/strain/phonon mode interpretation.",
+        eduBsRole: "B.S. in Photonics and Nanoelectronics",
+        eduBsWhen: "2019.03 — 2025.08",
+        eduBsWhere: "Hanyang University ERICA",
+        eduBsB1: "동일 학과에서 학부 졸업 후 석사 진학. 광전자/소자 기반을 탄탄히 다졌습니다.",
+        eduBsB2: "측정/분석 수업 및 랩 스타일 리포팅 경험을 축적했습니다.",
+        ex1Role: "Student Researcher (Micro-LED)",
+        ex1When: "2025.09 — Present",
+        ex1Where: "Next-Gen Nano Devices Lab (course/project style)",
+        ex1B1: "Passivation 비교 실험, 측정 계획, 반복 가능한 결과 정리.",
+        ex1B2: "SEM / confocal / 3D profiling, 기본 Raman 트렌드 분석.",
+        ex2Role: "Display Device R&D Internship",
+        ex2When: "2024 Summer",
+        ex2Where: "Industry-style project (assignment)",
+        ex2B1: "측정 셋업 보조, 주간 리포팅, 실험-액션 요약 작성.",
+        ex2B2: "데이터 정리 템플릿 개선으로 수작업/오류 감소.",
+        ex3Role: "Teaching Assistant / Lab Mentor",
+        ex3When: "2023 — 2024",
+        ex3Where: "Undergraduate lab course support (assignment)",
+        ex3B1: "실험 구조화 및 간결한 보고서 작성 코칭.",
+        ex3B2: "측정 일관성/트러블슈팅 체크리스트 제작.",
+        ctHint: "심플하고 프로답게",
+        ctBtn1: "Email me",
+        ctBtn2: "Back to top",
+        footerRight: "GitHub Pages용 컴팩트 원페이지 포트폴리오"
+      },
+      en: {
+        kicker: "<b>M.S. Student</b> | Photonics & Nanoelectronics",
+        heroTitle: "I build better devices by connecting<br/>process, measurement, and data.",
+        heroSub: "I focus on Micro-LED research and enjoy turning experiments into clear next actions by connecting fabrication, characterization, and data analysis with concise reporting.",
+        ctaWork: "Selected Work",
+        ctaEmail: "Email",
+        profileSub: "Hanyang Univ. ERICA<br/>Dept. of Photonics and Nanoelectronics<br/>Micro-LED / measurement / analysis",
+        infoFocusL: "Focus",
+        infoFocusV: "Micro-LED device R&D",
+        infoEduL: "Education",
+        infoEduV: "B.S. → M.S. (same dept.)",
+        nowHint: "What I’m working on lately",
+        now1t: "Micro-LED passivation & reliability",
+        now1d: "Comparing passivation options (e.g., Al₂O₃ vs SiO₂) and summarizing leakage/stability trends into decisions that guide the next iteration.",
+        now2t: "Raman-based insight building",
+        now2d: "Building an interpretation framework for carrier/strain/phonon-mode changes and linking spectral features to device behavior.",
+        hiHint: "Compact but clear",
+        h1t: "Process-first execution",
+        h1d: "I document flows for reproducibility and reduce variables to isolate cause and effect.",
+        h2t: "Measurement → decision",
+        h2d: "I turn SEM/confocal/3D profiling and electrical-optical results into actionable summaries.",
+        h3t: "Calm iteration",
+        h3d: "BJJ trained my discipline and composure—useful for iterate-improve-verify cycles in research.",
+        workTitle: "Selected Work",
+        workHint: "Pinned projects + latest updates",
+        p1n: "Micro-LED Passivation Study",
+        p1d: "Designed a comparison study (Al₂O₃ vs SiO₂), standardized metrics, and summarized repeat results into a one-page decision note.",
+        p2n: "Raman Insight Notebook",
+        p2d: "Organized Raman signals related to modes/strain/carriers and built a practical mapping from spectrum features to device phenomena.",
+        p3n: "Measurement Workflow Toolkit",
+        p3d: "Designed a pipeline that cleans measurement data and produces consistent figures for fast reporting.",
+        latestTitle: "Latest on GitHub",
+        latestHint: "Auto-loaded (non-fork repos)",
+        tlTitle: "Timeline",
+        tlHint: "Education + compact experience",
+        eduMsRole: "M.S. in Photonics and Nanoelectronics",
+        eduMsWhen: "2025.08 — Present (Expected 2027.08)",
+        eduMsWhere: "Hanyang University ERICA • Same department as B.S.",
+        eduMsB1: "Micro-LED device research, process optimization, and measurement analysis workflow.",
+        eduMsB2: "Raman-based analysis framing for carrier/strain/phonon mode interpretation.",
+        eduBsRole: "B.S. in Photonics and Nanoelectronics",
+        eduBsWhen: "2019.03 — 2025.08",
+        eduBsWhere: "Hanyang University ERICA",
+        eduBsB1: "Graduated from the same department and continued to M.S. to deepen device research skills.",
+        eduBsB2: "Built strong fundamentals through lab-style measurement and reporting.",
+        ex1Role: "Student Researcher (Micro-LED)",
+        ex1When: "2025.09 — Present",
+        ex1Where: "Next-Gen Nano Devices Lab (course/project style)",
+        ex1B1: "Passivation comparison, measurement planning, and repeatable reporting.",
+        ex1B2: "SEM / confocal / 3D profiling and basic Raman trend analysis.",
+        ex2Role: "Display Device R&D Internship",
+        ex2When: "2024 Summer",
+        ex2Where: "Industry-style project (assignment)",
+        ex2B1: "Supported measurement setup and weekly reporting; summarized experiments into actions.",
+        ex2B2: "Improved data templates to reduce manual work and errors.",
+        ex3Role: "Teaching Assistant / Lab Mentor",
+        ex3When: "2023 — 2024",
+        ex3Where: "Undergraduate lab course support (assignment)",
+        ex3B1: "Helped students structure experiments and write concise reports.",
+        ex3B2: "Built checklists for consistency and troubleshooting.",
+        ctHint: "Simple & professional",
+        ctBtn1: "Email me",
+        ctBtn2: "Back to top",
+        footerRight: "Built as a compact one-page portfolio for GitHub Pages"
+      }
+    };
+
+    function setLang(lang){
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[lang] && dict[lang][key] !== undefined) el.innerHTML = dict[lang][key];
+      });
+      document.getElementById("btnKo").classList.toggle("active", lang === "ko");
+      document.getElementById("btnEn").classList.toggle("active", lang === "en");
+      document.documentElement.lang = (lang === "ko" ? "ko" : "en");
+      localStorage.setItem("site_lang", lang);
+    }
+    document.getElementById("btnKo").addEventListener("click", () => setLang("ko"));
+    document.getElementById("btnEn").addEventListener("click", () => setLang("en"));
+
+    const saved = localStorage.getItem("site_lang");
+    setLang(saved === "en" ? "en" : "ko");
   </script>
 </body>
 </html>
